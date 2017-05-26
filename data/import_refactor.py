@@ -1,5 +1,9 @@
 import csv, re
 from os import walk
+
+def hasNumbers(inputString):
+     return bool(re.search(r'\d', inputString))
+     
 filenames = []
 for (dirpath, dirnames, filenames) in walk('/Users/jouanchen/Desktop/kashina/'):
 	filenames.append(filenames)
@@ -10,7 +14,8 @@ for filename in filenames:
 		i = 1
 		temp = ""
 		while i < len(input.split("\"")): 
-			temp += str(input.split("\"")[i])
+			if hasNumbers(str(input.split("\"")[i])):
+				temp += str(input.split("\"")[i])
 			i += 2
 		if temp.find("LINESTRING Z ") != -1:
 			temp1 = "\"MULTILINESTRING " + temp.replace("LINESTRING Z ", "(").replace(" 0,",",").replace(" 0)",")") + ")\",{}".format(filename)
