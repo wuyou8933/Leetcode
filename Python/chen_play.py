@@ -1,4 +1,5 @@
 import MySQLdb
+import findupqsql
 
 class sql(object):
     def __init__(self, username, password, db):
@@ -16,6 +17,7 @@ class sql(object):
 
 if __name__ == "__main__":
     qianzhan= sql("qian"，"zhan")
+    qianzhan=findupqsql("qianzhan")
     qianzhan.pull()
 #
 #    aiqianjin= sql("aiqian","jin")
@@ -24,3 +26,4 @@ if __name__ == "__main__":
 #    qianqian= sql("qian", "qian")
 #    qianqian.pull()
 #
+dasdasdasda
