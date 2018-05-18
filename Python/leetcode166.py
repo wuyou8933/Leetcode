@@ -4,12 +4,11 @@ def fractionToDecimal(numerator, denominator):
     tail, seen = '', {}
     while remainder != 0:
         if remainder in seen:
-            tail = tail[: seen[remainder]] + '(' + tail[seen[remainder]:] + ')'
+            tail = '(' + tail[seen[remainder]:] + ')'
             break
         seen[remainder] = len(tail)
         digit, remainder = divmod( remainder*10, abs(denominator) )
         tail+=str(digit)
-    print tail 
     return sign + str(head) + (tail and '.' + tail)
 
-print fractionToDecimal(10000,34)
+print fractionToDecimal(10000,5)
