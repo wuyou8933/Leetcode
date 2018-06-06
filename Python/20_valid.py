@@ -4,20 +4,24 @@ class Solution(object):
             :type s: str
             :rtype: bool
             """
-        stack = []
-        for i in range(len(s)):
-            if s[i] == '(' or s[i] == '[' or s[i] == '{':
-                stack.append(s[i])
-            if s[i] == ')':
-                if stack == [] or stack.pop() != '(':
-                    return False
-            if s[i] == ']':
-                if stack == [] or stack.pop() != '[':
-                    return False
-            if s[i] == '}':
-                if stack == [] or stack.pop() != '{':
-                    return False
-        if stack:
-            return False
-        else:
-            return True
+       stack = []
+    """
+    :type s: str
+    :rtype: bool
+    """
+        for char in s:
+            print stack
+            # import pdb;pdb.set_trace()
+            if char in "([{":
+                stack.append(char)
+            elif not stack:
+                return False
+            elif char == ")" and stack.pop() == "(":
+                continue
+            elif char == "]" and stack.pop() == "[":
+                continue
+            elif char == "}" and stack.pop() == "{":
+                continue
+            else:
+                return False
+        return not stack
