@@ -21,3 +21,6 @@ def fourSum(num, target):
     # return [list(t) for t in set(ksum(num, 3, target))]
 
 print(fourSum([1,2,3,4,5],9))
+
+
+///testest
