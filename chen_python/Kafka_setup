@@ -1,0 +1,53 @@
+192.168.86.36
+docker run -d \
+--name kafka \
+-p 7203:7203 \
+-p 9092:9092 \
+-e KAFKA_ADVERTISED_HOST_NAME=192.168.86.36 \
+-e ZOOKEEPER_IP=192.168.86.36 \
+ches/kafka
+
+Create topic
+
+docker run \
+--rm ches/kafka kafka-topics.sh \
+--create \
+--topic localizations \
+--replication-factor 1 \
+--partitions 1 \
+--zookeeper 192.168.86.36:2181
+
+docker run \
+--rm ches/kafka kafka-topics.sh \
+--create \
+--topic colocalizations \
+--replication-factor 1 \
+--partitions 1 \
+--zookeeper 192.168.86.36:2181
+
+List topic
+
+docker run \
+--rm ches/kafka kafka-topics.sh \
+--list \
+--zookeeper 192.168.86.36:2181
+
+Producer
+
+docker run --rm --interactive \
+ches/kafka kafka-console-producer.sh \
+--topic localizations \
+--broker-list 192.168.86.36:9092
+
+--topic colocalizations \
+docker run --rm --interactive \
+ches/kafka kafka-console-producer.sh \
+--topic colocalizations \
+--broker-list 192.168.86.36:9092
+
+
+docker run --rm \
+ches/kafka kafka-console-consumer.sh \
+--topic localizations \
+--from-beginning \
+--zookeeper 192.168.86.36:2181
