@@ -1,6 +1,7 @@
 # Recursive DP function to find all employees who directly or indirectly
 # reports to a given manager and store the result in the result dict
 def findAllReportingEmployees(manager, managerToEmployeeMappings, result):
+    
  
     # if the sub-problem is already seen before
     if manager in result:
